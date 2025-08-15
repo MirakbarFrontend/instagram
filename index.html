@@ -4,7 +4,54 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>26-27 Avgust Masterklass</title>
-		<link rel="stylesheet" href="css/styles.css" />
+
+		<!-- Critical CSS -->
+		<style>
+			body {
+				margin: 0;
+				font-family: sans-serif;
+				background: #fff;
+				color: #000;
+			}
+			.instagram {
+				padding: 20px;
+			}
+			.btn {
+				background: #7a3ff2;
+				color: #fff;
+				border: none;
+				padding: 12px 20px;
+				font-size: 16px;
+				cursor: pointer;
+				border-radius: 5px;
+			}
+			img {
+				max-width: 100%;
+				height: auto;
+				display: block;
+			}
+			.container {
+				max-width: 1200px;
+				margin: auto;
+				display: flex;
+				flex-wrap: wrap;
+				gap: 20px;
+			}
+			.instagram__info {
+				flex: 1 1 400px;
+			}
+			.instagram__image {
+				flex: 1 1 300px;
+			}
+			/* Minimal critical CSS qismi, qolganlari tashqi faylda bo'ladi */
+		</style>
+
+		<!-- Preload external CSS -->
+		<link rel="preload" href="css/styles.css" as="style" />
+		<link rel="stylesheet" href="css/styles.css" media="all" />
+
+		<!-- Preload JS -->
+		<link rel="preload" href="js/main.js" as="script" />
 	</head>
 	<body>
 		<section class="instagram">
@@ -14,7 +61,10 @@
 					<div class="instagram__info-top">
 						<div class="info-card">
 							<div class="info-media">
-								<img src="images/calendar.png" alt="calendar" />
+								<picture>
+									<source srcset="images/calendar.webp" type="image/webp" />
+									<img src="images/calendar.png" alt="Tadbir sanasi" loading="lazy" />
+								</picture>
 								<p class="info-card__text">26-27 Avgust</p>
 							</div>
 							<h2 class="info-card__title">20:00</h2>
@@ -26,10 +76,13 @@
 					</div>
 
 					<p class="instagram__info-text">Risolat Umidovadan <span>2 kunlik BEPUL</span> darslik</p>
-
 					<h2 class="instagram__info-title">Instagram va <span>pul</span></h2>
+
 					<div class="instagram__image none">
-						<img src="images/img-media.png" alt="Instagram Masterklass" />
+						<picture>
+							<source srcset="images/img-media.webp" type="image/webp" />
+							<img src="images/img-media.png" alt="Instagram Masterklass" loading="lazy" />
+						</picture>
 					</div>
 
 					<button class="btn media">DARSDA QATNASHISH</button>
@@ -39,15 +92,15 @@
 						<h3 class="instagram__info-wrapper-title none">BEPUL darsda:</h3>
 						<ul class="instagram__info-wrapper-list">
 							<li class="list-item">
-								<img src="images/verify.png" alt="verify" />
+								<img src="images/verify.png" alt="Tasdiq belgi" loading="lazy" />
 								<p>Storis-meyker bo'lib oyiga <span>500$ daromad qilishni</span></p>
 							</li>
 							<li class="list-item">
-								<img src="images/verify.png" alt="verify" />
+								<img src="images/verify.png" alt="Tasdiq belgi" loading="lazy" />
 								<p>Storislaringizni <span>oxvatini ko'tarish va sotuv</span> qilish usullarini</p>
 							</li>
 							<li class="list-item">
-								<img src="images/verify.png" alt="verify" />
+								<img src="images/verify.png" alt="Tasdiq belgi" loading="lazy" />
 								<p>Storislaringizni serialdek tomosha qilish <span>sirlarini o'rganasiz</span></p>
 							</li>
 						</ul>
@@ -55,16 +108,14 @@
 
 					<button class="btn block" onclick="openModal()">DARSDA QATNASHISH</button>
 
+					<!-- Modal -->
 					<div id="modalOverlay" class="modal-overlay" style="display: none">
 						<div class="modal container" id="modal" style="display: none">
 							<div class="modal__top">
 								<button class="modal__x" onclick="closeModal()">x</button>
 							</div>
 							<div class="modal__title-div">
-								<h2 class="modal__title">
-									MASTERKLASSGA <br />
-									RO'YXATDAN O'TISH
-								</h2>
+								<h2 class="modal__title">MASTERKLASSGA <br />RO'YXATDAN O'TISH</h2>
 							</div>
 							<form class="modal__form" onsubmit="return submitForm(event)">
 								<div class="modal__row1">
@@ -75,136 +126,10 @@
 								<div class="modal__row2">
 									<label for="number">Telefon raqamingiz:</label>
 									<div class="modal__row2-wrapper">
-										<div class="demo-container">
-											<div class="country-selector" id="countrySelector">
-												<button type="button" id="countryButton" class="country-button">
-													<span id="selectedCode">+998</span>
-													<svg class="dropdown-arrow" id="dropdownArrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-														<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-													</svg>
-												</button>
-
-												<div id="countryDropdown" class="country-dropdown">
-													<button type="button" class="country-option selected" data-code="+998" data-name="Uzbekistan">
-														<div class="country-info">
-															<span class="country-flag">🇺🇿</span>
-															<span class="country-name">Uzbekistan</span>
-														</div>
-														<div>
-															<span class="country-code">+998</span>
-															<svg class="check-icon" fill="currentColor" viewBox="0 0 20 20">
-																<path
-																	fill-rule="evenodd"
-																	d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-																	clip-rule="evenodd"></path>
-															</svg>
-														</div>
-													</button>
-
-													<button type="button" class="country-option" data-code="+1" data-name="AQSH">
-														<div class="country-info">
-															<span class="country-flag">🇺🇸</span>
-															<span class="country-name">AQSH</span>
-														</div>
-														<div>
-															<span class="country-code">+1</span>
-															<svg class="check-icon" fill="currentColor" viewBox="0 0 20 20">
-																<path
-																	fill-rule="evenodd"
-																	d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-																	clip-rule="evenodd"></path>
-															</svg>
-														</div>
-													</button>
-
-													<button type="button" class="country-option" data-code="+82" data-name="Janubiy Koreya">
-														<div class="country-info">
-															<span class="country-flag">🇰🇷</span>
-															<span class="country-name">Janubiy Koreya</span>
-														</div>
-														<div>
-															<span class="country-code">+82</span>
-															<svg class="check-icon" fill="currentColor" viewBox="0 0 20 20">
-																<path
-																	fill-rule="evenodd"
-																	d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-																	clip-rule="evenodd"></path>
-															</svg>
-														</div>
-													</button>
-
-													<button type="button" class="country-option" data-code="+996" data-name="Qirg'iziston">
-														<div class="country-info">
-															<span class="country-flag">🇰🇬</span>
-															<span class="country-name">Qirg'iziston</span>
-														</div>
-														<div>
-															<span class="country-code">+996</span>
-															<svg class="check-icon" fill="currentColor" viewBox="0 0 20 20">
-																<path
-																	fill-rule="evenodd"
-																	d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-																	clip-rule="evenodd"></path>
-															</svg>
-														</div>
-													</button>
-
-													<button type="button" class="country-option" data-code="+7" data-name="Qozog'iston">
-														<div class="country-info">
-															<span class="country-flag">🇰🇿</span>
-															<span class="country-name">Qozog'iston</span>
-														</div>
-														<div>
-															<span class="country-code">+7</span>
-															<svg class="check-icon" fill="currentColor" viewBox="0 0 20 20">
-																<path
-																	fill-rule="evenodd"
-																	d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-																	clip-rule="evenodd"></path>
-															</svg>
-														</div>
-													</button>
-
-													<button type="button" class="country-option" data-code="+90" data-name="Turkiya">
-														<div class="country-info">
-															<span class="country-flag">🇹🇷</span>
-															<span class="country-name">Turkiya</span>
-														</div>
-														<div>
-															<span class="country-code">+90</span>
-															<svg class="check-icon" fill="currentColor" viewBox="0 0 20 20">
-																<path
-																	fill-rule="evenodd"
-																	d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-																	clip-rule="evenodd"></path>
-															</svg>
-														</div>
-													</button>
-
-													<button type="button" class="country-option" data-code="+44" data-name="Angliya">
-														<div class="country-info">
-															<span class="country-flag">🇬🇧</span>
-															<span class="country-name">Angliya</span>
-														</div>
-														<div>
-															<span class="country-code">+44</span>
-															<svg class="check-icon" fill="currentColor" viewBox="0 0 20 20">
-																<path
-																	fill-rule="evenodd"
-																	d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-																	clip-rule="evenodd"></path>
-															</svg>
-														</div>
-													</button>
-												</div>
-											</div>
-										</div>
-
 										<input type="text" id="number" placeholder="88 888 88 88" />
 									</div>
 									<div id="number-error" style="color: red; font-size: 14px"></div>
 								</div>
-
 								<button type="submit" class="modal__btn">RO'YXATDAN O'TISH</button>
 							</form>
 						</div>
@@ -213,11 +138,15 @@
 
 				<!-- Image section -->
 				<div class="instagram__image block">
-					<img src="images/instagram-img.png" alt="Instagram Masterklass" />
+					<picture>
+						<source srcset="images/instagram-img.webp" type="image/webp" />
+						<img src="images/instagram-img.png" alt="Instagram Masterklass" loading="lazy" />
+					</picture>
 				</div>
 			</div>
 		</section>
+
 		<!-- JS -->
-		<script src="js/main.js"></script>
+		<script src="js/main.js" defer></script>
 	</body>
 </html>
