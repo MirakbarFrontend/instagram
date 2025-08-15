@@ -830,13 +830,9 @@
 				}
 			}
 		</style>
-
-		<!-- Preload external CSS -->
-		<link rel="preload" href="css/styles.css" as="style" />
-		<link rel="stylesheet" href="css/styles.css" media="all" />
-
-		<!-- Preload JS -->
-		<link rel="preload" href="js/main.js" as="script" />
+		<!-- Qolgan CSS-ni preload qilib yuklaymiz -->
+		<link rel="preload" href="css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+		<noscript><link rel="stylesheet" href="css/styles.css" /></noscript>
 	</head>
 	<body>
 		<section class="instagram">
