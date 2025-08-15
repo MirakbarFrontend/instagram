@@ -311,7 +311,7 @@ a {
 	width: 100%;
 	cursor: pointer;
 	border-radius: 50px;
-	background: linear-gradient(90deg, #d50606 0%, #bd0101 42.79%, #bd0101 62.02%, #d50606 100%);
+	background: #841ebf;
 	transition: 0.3s;
 	font-size: 28px;
 	color: white;
@@ -659,6 +659,7 @@ a {
 	}
 	.modal__row1 label {
 		margin-bottom: 6px;
+		text-align: start;
 	}
 	.modal__row1 input {
 		padding: 0 12px;
@@ -669,6 +670,7 @@ a {
 		margin-bottom: 34px;
 	}
 	.modal__row2 label {
+		text-align: start;
 		margin-bottom: 6px;
 	}
 	.modal__row2-wrapper {
@@ -680,6 +682,11 @@ a {
 		padding: 0 12px;
 		min-height: 40px;
 		background-color: transparent;
+	}
+
+	.country-button {
+		padding: 10px 14px;
+		max-width: 90px;
 	}
 	.modal__btn {
 		height: auto;
@@ -727,7 +734,7 @@ a {
 	}
 
 	.instagram__image img {
-		width: 400px;
+		width: 430px;
 		height: 330px;
 	}
 	/* === Info Section === */
